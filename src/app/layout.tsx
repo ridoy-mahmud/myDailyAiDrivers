@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-gradient-to-br from-[#1a103d] via-[#2d0b4e] to-[#1a0a23] min-h-screen text-white relative overflow-x-hidden`}>
         <Particles className="absolute inset-0 z-0 pointer-events-none" quantity={60} />
         <div className="relative z-10 min-h-screen flex flex-col w-full">
-          <header className="flex flex-col items-center justify-center pt-10 text-center px-4 ">
+          <header className="flex flex-col items-center justify-center pt-10 text-center px-4 pb-8">
             <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-fuchsia-500 via-purple-400 to-indigo-500 bg-clip-text text-transparent drop-shadow-2xl mb-4 tracking-tight">
               Discover & Organize Your AI Tools
             </h1>
