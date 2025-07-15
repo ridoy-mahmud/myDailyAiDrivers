@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Particles from "./particles";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +22,56 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.variable} antialiased bg-gradient-to-br from-[#1a103d] via-[#2d0b4e] to-[#1a0a23] min-h-screen text-white relative overflow-x-hidden`}>
+        <Particles className="absolute inset-0 z-0 pointer-events-none" quantity={60} />
+        <div className="relative z-10 min-h-screen flex flex-col w-full">
+          <header className="flex flex-col items-center justify-center pt-10 text-center px-4 ">
+            <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-fuchsia-500 via-purple-400 to-indigo-500 bg-clip-text text-transparent drop-shadow-2xl mb-4 tracking-tight">
+              Discover & Organize Your AI Tools
+            </h1>
+            <p className="text-lg md:text-2xl text-purple-200/80 max-w-2xl font-medium">
+              A futuristic Web3 dashboard to sort and access your favorite AI tools for daily productivity.
+            </p>
+          </header>
+          <main className="flex flex-col items-center justify-start px-4 py-8 flex-1 w-full">
+            {children}
+          </main>
+          <footer className="relative w-full mt-12 py-8 text-center overflow-hidden">
+            {/* Futuristic background effects */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0514] via-[#1a0a23]/90 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-900/20 to-transparent"></div>
+            
+            {/* Glowing border effect */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-fuchsia-500/60 to-transparent"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent blur-sm"></div>
+            
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center space-y-4">
+              <div className="flex items-center space-x-2 text-purple-200/90">
+                <div className="w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium tracking-wider">QUANTUM POWERED</span>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              </div>
+              
+              <p className="text-purple-300/80 text-sm font-light tracking-wide">
+                &copy; {new Date().getFullYear()} AI Tools Hub • Crafted with futuristic vibes • by Ridoy
+              </p>
+              
+              <div className="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="w-1 h-1 bg-gradient-to-r from-fuchsia-500 to-cyan-400 rounded-full opacity-60"
+                    style={{
+                      animationDelay: `${i * 0.2}s`,
+                      animation: 'pulse 2s infinite'
+                    }}
+                  ></div>
+                ))}
+              </div>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
